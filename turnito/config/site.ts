@@ -1,59 +1,34 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Turnito",
-  description: "Manejo de turnos y citas",
+  name: "Alohomora Textiles",
+  description: "Alohomora, tienda de productos de tela y bordados hechos con amor",
   navItems: [
     {
-      label: "Home",
+      label: "Inicio",
       href: "/",
     },
     {
-      label: "Turnos Disponibles",
-      href: "/docs",
-    },
-    {
-      label: "Reservar",
-      href: "/pricing",
-    },
-    {
-      label: "Cancelar",
-      href: "/blog",
+      label: "Nuestos Productos",
+      href: "/products",
     },
     {
       label: "Sobre Nosotros",
       href: "/about",
     },
   ],
-  navMenuItems: [
-    {
-      label: "Profile",
-      href: "/profile",
-    },
-    {
-      label: "Dashboard",
-      href: "/dashboard",
-    },
-    {
-      label: "Projects",
-      href: "/projects",
-    },
-    {
-      label: "Team",
-      href: "/team",
-    },
-    {
-      label: "Calendar",
-      href: "/calendar",
-    },
-    {
-      label: "Settings",
-      href: "/settings",
-    },
-    {
-      label: "Logout",
-      href: "/logout",
-    },
+  navMenuItems: [{
+    label: "Inicio",
+    href: "/",
+  },
+  {
+    label: "Nuestos Productos",
+    href: "/docs",
+  },
+  {
+    label: "Sobre Nosotros",
+    href: "/about",
+  },
   ],
   links: {
     github: "https://github.com/nextui-org/nextui",
