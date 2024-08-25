@@ -1,36 +1,29 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import WhatsApp, { Instagram } from './icons';
+import AlohomoraLogo from "@/public/alohomora.png";
+import { WhatsApp, Instagram } from './icons';
 
-const Contact = () => {
-    return (
-        <div>
-            <h6 className="footer-title white">Contactanos</h6>
-            <div className='white'>
-                <h5>Brandsen 805</h5>
-                <h5>Bahía Blanca, Buenos Aires, Argentina</h5>
-                <h5>Teléfono: +54 9 291 4123456</h5>
-            </div>
 
-        </div>
-    );
-};
 
 const Footer: React.FC<{}> = () => {
     return (
-        <footer className="footer p-10 bg-orange-400 md:place-items-center">
-            <nav className="">
+        <footer className="footer flex flex-col md:flex-row md:justify-around gap-5 px-10  py-5 bg-alohomoraOrange md:place-items-center">
+            <nav className="footer">
+                <Image src={AlohomoraLogo} alt="Alohomora Logo" width={150} height={150} />
                 
             </nav>
+
             <nav>
-                <Contact />
-            </nav>
-            <nav>
-                <h6 className="footer-title ">Social</h6>
-                <div className="grid grid-flow-col gap-4">
-                    <Instagram height={10}/>
-                    
+                <div className="flex flex-col gap-4">
+                    <h2 className='font-semibold text-black'>Redes Sociales</h2>
+                    <div className="flex flex-row gap-4">
+                        <Instagram width={40} height={40} />
+                        <WhatsApp width={40} height={40} />
+                    </div>
+                    <h5 className='font-semibold text-black'>Bahía Blanca, Buenos Aires, Argentina</h5>
+
+
 
                 </div>
             </nav>
