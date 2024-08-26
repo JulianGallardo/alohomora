@@ -9,6 +9,7 @@ module.exports = {
   ],
   theme: {
     defaultMode: 'light',
+    darkMode: 'false',
     extend: {
       colors:{
         alohomoraOrange: '#FF8C00',
@@ -16,6 +17,5 @@ module.exports = {
       }
     },
   },
-  darkMode: "false",
   plugins: [nextui()],
 }
