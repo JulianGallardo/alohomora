@@ -7,6 +7,7 @@ export const siteConfig = {
     {
       label: "Inicio",
       href: "/",
+      
     },
     {
       label: "Nuestos Productos",
