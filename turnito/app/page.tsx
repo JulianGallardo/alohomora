@@ -7,6 +7,9 @@ import AlohomoraHome from "@/public/AlohomoraHome.jpg";
 import AboutUsImg from "@/public/aboutUs.jpg";
 import Image from "next/image";
 import Carousel from "@/components/home/carousel";
+import Image1 from "@/public/mockup/landing_carousel/image_carousel_1.jpg";
+import Image2 from "@/public/mockup/landing_carousel/image_carousel_2.jpg";
+import Image3 from "@/public/mockup/landing_carousel/image_carousel_3.jpg";
 
 export default function Home() {
   return (
@@ -28,7 +31,9 @@ export default function Home() {
         <h2 className={title({})}>Nuestros Productos</h2>
         <p className={subtitle()}>Conoce los productos que tenemos para tus chicos.</p>
         <div className="flex flex-col md:w-full md:h-1/2  gap-4">
-          <Carousel />
+          <Carousel
+
+          />
         </div>
         <div className="flex flex-row gap-4">
           <Link href="/products" className={buttonStyles({})}>
