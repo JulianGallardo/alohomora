@@ -1,31 +1,33 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
-datasource db {
-  provider          = "postgresql"
-  url               = env("DATABASE_URL")
-  directUrl         = env("DIRECT_URL")
-}
-
 generator client {
   provider = "prisma-client-js"
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User?   @relation(fields: [authorId], references: [id])
-  authorId  Int?
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+model Product {
+  id          Int               @id @default(autoincrement())
+  name        String
+  description String?
+  price       Float
+  stock       Int
+  categories  CategoryProduct[] @relation("ProductCategories")
+}
+
+model Category {
+  id               Int               @id @default(autoincrement())
+  name             String            @unique
+  categoryProducts CategoryProduct[] @relation("CategoryProducts")
+}
+
+model CategoryProduct {
+  id         Int @id @default(autoincrement())
+  categoryId Int
+  productId  Int
+
+  Product  Product  @relation("ProductCategories", fields: [productId], references: [id])
+  Category Category @relation("CategoryProducts", fields: [categoryId], references: [id])
 }
