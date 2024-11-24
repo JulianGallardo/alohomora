@@ -1,8 +1,8 @@
 {
-  "name": "next-app-template",
+  "name": "alohomora",
   "version": "0.0.1",
   "private": true,
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
