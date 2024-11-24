@@ -25,4 +25,8 @@ export const categoryRepository = {
       where: { id },
     });
   },
+  async deleteAllCategories() {
+    return prisma.category.deleteMany();
+  }
+  
 };

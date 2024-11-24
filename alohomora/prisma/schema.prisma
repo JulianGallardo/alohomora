@@ -15,19 +15,20 @@ model Product {
   price       Float
   stock       Int
   categories  CategoryProduct[] @relation("ProductCategories")
+  
 }
 
 model Category {
   id               Int               @id @default(autoincrement())
   name             String            @unique
-  categoryProducts CategoryProduct[] @relation("CategoryProducts")
+  categoryProducts CategoryProduct[] @relation("CategoryProducts") 
 }
 
 model CategoryProduct {
-  id         Int @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
   categoryId Int
   productId  Int
-
-  Product  Product  @relation("ProductCategories", fields: [productId], references: [id])
-  Category Category @relation("CategoryProducts", fields: [categoryId], references: [id])
+  Category   Category @relation("CategoryProducts", fields: [categoryId], references: [id], onDelete: Cascade) 
+  Product    Product  @relation("ProductCategories", fields: [productId], references: [id], onDelete: Cascade)
 }
+

@@ -1,6 +1,8 @@
 import { Prisma, PrismaClient, Product } from "@prisma/client";
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient(
+  {log: ['query', 'info', 'warn', 'error']}
+);
 
 export const productsRepository = {
   async getProducts() {
@@ -25,5 +27,8 @@ export const productsRepository = {
     return prisma.product.delete({
       where: { id },
     });
+  },
+  async deleteAllProducts() {
+    return prisma.product.deleteMany();
   },
 };

@@ -1,9 +1,17 @@
 import { PrismaClient } from "@prisma/client";
+import { productsRepository } from "./repository/productsRepository";
+import { categoryRepository } from "./repository/categoryRepository";
 
 
 const prisma = new PrismaClient();
 
 async function main() {
+
+  // Destruye la anterior bdd
+  productsRepository.deleteAllProducts();
+  categoryRepository.deleteAllCategories();
+
+
   // Crea las categorías
   const categories = await prisma.category.createMany({
     data: [
