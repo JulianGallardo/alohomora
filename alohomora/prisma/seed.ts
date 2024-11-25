@@ -1,9 +1,9 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "./db";
 import { productsRepository } from "./repository/productsRepository";
 import { categoryRepository } from "./repository/categoryRepository";
 
 
-const prisma = new PrismaClient();
+
 
 async function main() {
 

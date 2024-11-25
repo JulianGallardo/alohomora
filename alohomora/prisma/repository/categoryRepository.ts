@@ -1,6 +1,6 @@
 import { Prisma, PrismaClient, Category } from "@prisma/client";
 
-const prisma = new PrismaClient();
+import prisma from "../db";
 
 export const categoryRepository = {
   async getCategories() {

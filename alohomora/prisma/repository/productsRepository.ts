@@ -1,8 +1,6 @@
 import { Prisma, PrismaClient, Product } from "@prisma/client";
 
-const prisma = new PrismaClient(
-  {log: ['query', 'info', 'warn', 'error']}
-);
+import prisma from "../db";
 
 export const productsRepository = {
   async getProducts() {
