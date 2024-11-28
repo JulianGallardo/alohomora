@@ -1,38 +1,45 @@
-'use client'
-
-import React, { Suspense, useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+"use client";	
+import { getProducts } from "@/actions/productActions";
+import ProductLanding from "@/components/products/id/productLanding";
+import RecomendedProducts from "@/components/products/id/recomendedProducts";
+import { productsRepository } from "@/prisma/repository/productsRepository";
 import { Product } from "@prisma/client";
-import ProductPage from "@/components/products/id/productPage";
-import { getProductById } from "@/actions/productActions";
-import ProductNotFound from "@/components/products/id/productNotFound";
-import ProductPageSkeleton from "@/components/products/id/productSkeleton";
+import { GetServerSideProps } from "next";
+import { Suspense, use, useEffect, useState } from "react";
 
 
 
 export default function Home() {
 
-    const path = usePathname();
-    const productId = path.split('/').pop();
-    const [product, setProduct] = useState<Product>();
-    const [loading, setLoading] = useState(true);
+
+
+    
+    const [relatedProducts, setRelatedProducts] = useState<Product[]>();
 
     useEffect(() => {
-        getProductById(Number(productId)).then((product: Product | null) => {
-            if (product) {
-                setProduct(product);
-
-            }
-            setLoading(false);
-
+        getProducts().then((products: Product[]) => {
+            setRelatedProducts(products);
+        }).catch((error) => {
+            console.error('Error fetching products:', error);
         });
-    }, [productId]);
+    }, []);
+    
+
 
     return (
 
-        loading ? <ProductPageSkeleton/> :
-            (product ? <ProductPage {...product} /> : <ProductNotFound />)
+        <section className="flex flex-col mx-10 gap-4 py-8 md:py-10 overflow-hidden">
+            <ProductLanding />
+            <Suspense fallback={<div>Loading...</div>}>
+                {
+                    relatedProducts ? <RecomendedProducts products={relatedProducts} /> : <div>No hay productos relacionados</div>
+                }
+            </Suspense>
+        </section >
 
 
     );
 }
+
+
+

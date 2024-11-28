@@ -4,17 +4,33 @@ import prisma from "../db";
 
 export const productsRepository = {
   async getProducts() {
-    return prisma.product.findMany();
+    try {
+      const products = await prisma.product.findMany();
+      return products;
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      throw error;
+    } finally {
+      await prisma.$disconnect();
+    }
   },
   async getProductById(id: number) {
-    return prisma.product.findUnique({
-      where: { id },
-    });
+    try {
+      const product = await prisma.product.findUnique({
+        where: { id },
+      });
+      return product;
+    } catch (error) {
+      console.error('Error fetching product by ID:', error);
+      throw error;
+    } finally {
+      await prisma.$disconnect();
+    }
   },
-    async createProduct(data: Prisma.ProductCreateInput) {
-        return prisma.product.create({ data });
-    },
-  
+  async createProduct(data: Prisma.ProductCreateInput) {
+    return prisma.product.create({ data });
+  },
+
   async updateProduct(id: number, data: { name: string; price: number }) {
     return prisma.product.update({
       where: { id },

@@ -3,7 +3,7 @@ import Card from "@/components/products/itemCard";
 import { productsRepository } from "@/prisma/repository/productsRepository";
 import { Product } from "@prisma/client";
 import { Suspense } from "react";
-import ProductsServerSide from "./productServer";
+import ProductsServerSide from "../../../components/products/productServer";
 
 export default async function Home() {
 

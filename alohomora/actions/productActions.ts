@@ -13,3 +13,6 @@ export async function getProductById(productId: number): Promise<Product | null>
     });
 }
 
+export async function getProducts(){
+    return await productsRepository.getProducts();
+}

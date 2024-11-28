@@ -10,6 +10,7 @@ import { WhatsApp } from "@/components/icons";
 import { button } from "@nextui-org/theme";
 import { Button } from "@nextui-org/button";
 import { Product } from "@prisma/client";
+import RecomendedProducts from "./recomendedProducts";
 
 export default function ProductPage(product:Product) {
     return (
@@ -50,6 +51,7 @@ export default function ProductPage(product:Product) {
                     </Button>
                 </div>
             </div>
+            
         </section>
     );
 }
